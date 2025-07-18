@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ArtStudio – Interactive Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>🎨 ArtStudio – Interactive Gallery</h1>
+    <p>Create. Upload. Explore.</p>
+    <button id="theme-toggle" class="theme-toggle">🌙 Toggle Theme</button>
+  </header>
+
+  <main>
+    <section class="canvas-area">
+      <h2>Canvas Playground</h2>
+      <canvas id="art-canvas" width="500" height="300"></canvas>
+      <div class="canvas-controls">
+        <button onclick="saveImage()">💾 Save Artwork</button>
+        <button onclick="toggleDrawMode()">✏️ Toggle Draw Mode</button>
+      </div>
+    </section>
+
+    <section class="upload-section">
+      <h2>Upload Your Art</h2>
+      <input type="file" id="upload" accept="image/*" />
+      <div id="uploaded-gallery" class="gallery"></div>
+    </section>
+
+    <section class="curated-gallery">
+      <h2>Featured Gallery</h2>
+      <div class="gallery">
+        <div class="art-piece" onclick="favoriteArt(1)">🌈 Color Burst</div>
+        <div class="art-piece" onclick="favoriteArt(2)">🌟 Star Light</div>
+        <div class="art-piece" onclick="favoriteArt(3)">🌀 Spiral Flow</div>
+      </div>
+      <button onclick="showFavorites()">⭐ Show Favorites</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ArtStudio. Made with ❤️ and JavaScript.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
