@@ -86,6 +86,7 @@ canvas {
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 input[type="file"], button {
@@ -146,4 +147,27 @@ body.light-theme {
   --highlight: royalblue;
   --text-color: black;
   --border-color: darkgray;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .canvas-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  input[type="file"], button {
+    width: 100%;
+  }
+
+  .gallery {
+    gap: 0.6rem;
+  }
+
+  .art-piece, .uploaded-art {
+    flex: 0 1 100px;
+  }
 }
