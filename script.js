@@ -35,9 +35,21 @@ function random() {
   return Math.floor(Math.random() * 255);
 }
 
-function toggleDrawMode() {
+// Toggle draw mode with UI feedback
+const drawBtn = document.getElementById('draw-toggle');
+drawBtn.addEventListener('click', () => {
   isDrawing = !isDrawing;
-}
+  drawBtn.textContent = isDrawing ? '🛑 Stop Drawing' : '✏️ Start Drawing';
+});
+
+// Save canvas as image
+document.getElementById('save-btn').addEventListener('click', () => {
+  const image = canvas.toDataURL("image/png");
+  const link = document.createElement("a");
+  link.download = "my-artwork.png";
+  link.href = image;
+  link.click();
+});
 
 // 📷 Image Upload
 const uploadInput = document.getElementById('upload');
@@ -54,12 +66,14 @@ uploadInput.addEventListener('change', (event) => {
   }
 });
 
-// ⭐ Favorites with localStorage
+// ⭐ Favorites
 function favoriteArt(id) {
   const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
   if (!favs.includes(id)) favs.push(id);
   localStorage.setItem('favorites', JSON.stringify(favs));
-  alert('Added to favorites!');
+  const el = document.querySelector(`.art-piece:nth-child(${id})`);
+  el.style.background = 'gold';
+  el.style.boxShadow = '0 0 10px gold';
 }
 
 function showFavorites() {
@@ -71,16 +85,7 @@ function showFavorites() {
   }
 }
 
-// 💾 Save canvas as image
-function saveImage() {
-  const image = canvas.toDataURL("image/png");
-  const link = document.createElement("a");
-  link.download = "my-artwork.png";
-  link.href = image;
-  link.click();
-}
-
-// 🌗 Theme Toggle with localStorage
+// 🌗 Theme Toggle
 const toggleBtn = document.getElementById('theme-toggle');
 
 document.addEventListener('DOMContentLoaded', () => {
